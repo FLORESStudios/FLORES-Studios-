@@ -34,31 +34,38 @@
         Descargar Videos de TikTok
     </h2>
 
-    <p class="text-center text-gray-600 mb-4">Sin marca de agua | HD | 4K | MP3</p>
+    <p class="text-center text-gray-600 mb-6">
+        Sin marca de agua | HD | 4K | MP3
+    </p>
 
-    <input id="videoURL" 
+    <!-- INPUT -->
+    <input id="videoURL"
            class="w-full p-3 border-2 border-pink-400 rounded-xl outline-none focus:border-pink-600"
-           type="text" placeholder="Pega aquí el enlace de TikTok">
+           type="text"
+           placeholder="Pega aquí el enlace de TikTok">
 
     <button onclick="processVideo()"
         class="w-full mt-4 bg-pink-600 text-white p-3 rounded-xl font-semibold hover:bg-pink-700">
         Descargar
     </button>
 
-    <!-- Loading -->
+    <!-- LOADING -->
     <div id="loading" class="hidden mt-4">
         <div class="loader"></div>
-        <p class="text-center text-pink-600 mt-2 font-medium">Procesando enlace...</p>
+        <p class="text-center text-pink-600 mt-2 font-medium">
+            Procesando enlace...
+        </p>
     </div>
 
-    <!-- Vista previa -->
+    <!-- VISTA PREVIA -->
     <div id="previewContainer" class="hidden mt-6">
-        <h3 class="text-xl font-bold text-pink-600 mb-2 text-center">Vista Previa</h3>
+        <h3 class="text-xl font-bold text-pink-600 mb-2 text-center">
+            Vista Previa
+        </h3>
 
         <video id="previewVideo" controls class="w-full rounded-xl shadow"></video>
 
         <div class="mt-5 grid grid-cols-1 gap-3">
-
             <a id="downloadHD" download
                class="bg-pink-500 text-white p-3 rounded-xl text-center font-semibold block">
                Descargar HD
@@ -78,19 +85,36 @@
 
 </div>
 
+<!-- FOOTER + VIDEO TIKTOK PÚBLICO -->
+<footer class="max-w-xl mx-auto mt-10 mb-6 p-4 bg-white rounded-2xl shadow-xl border border-pink-300 text-center">
+
+    <p class="text-gray-700 text-sm">
+        Realizado Por: <b>Yerson H. Arohuanca</b>
+    </p>
+    <p class="text-gray-700 text-sm mb-4">
+        Soporte: <b>Jessica C. Gomez</b>
+    </p>
+
+    <!-- VIDEO TIKTOK PÚBLICO DEBAJO -->
+    <blockquote class="tiktok-embed"
+        cite="https://www.tiktok.com/@floresstudios/video/7582554970243747093"
+        data-video-id="7582554970243747093"
+        style="max-width: 100%; min-width: 325px;">
+        <section></section>
+    </blockquote>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
+    <p class="mt-4 text-xs text-gray-500">
+        © 2025 FLORES Studios. Todos los derechos reservados.
+    </p>
+</footer>
+
 <!-- BOTÓN WHATSAPP -->
 <a href="https://wa.me/51956461177"
    class="fixed bottom-5 right-5 bg-green-500 p-3 rounded-full shadow-xl">
-   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
         class="w-10 h-10">
 </a>
-
-<!-- FOOTER -->
-<footer class="text-center mt-10 mb-6 text-gray-700 text-sm">
-    <p>Realizado Por: <b>Yerson H. Arohuanca</b></p>
-    <p>Soporte: <b>Jessica C. Gomez</b></p>
-    <p class="mt-2">© 2025 FLORES Studios. Todos los derechos reservados.</p>
-</footer>
 
 <script>
 async function processVideo() {
@@ -122,7 +146,7 @@ async function processVideo() {
         const data = await response.json();
 
         if (data.code !== 0) {
-            alert("Error al procesar el enlace. Intenta con otro.");
+            alert("Error al procesar el enlace.");
             loading.classList.add("hidden");
             return;
         }
@@ -138,7 +162,7 @@ async function processVideo() {
         downloadMP3.href = video.music;
 
     } catch (error) {
-        alert("Hubo un error con el servidor.");
+        alert("Error del servidor.");
     }
 
     loading.classList.add("hidden");
